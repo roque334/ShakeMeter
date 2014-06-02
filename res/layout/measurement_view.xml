@@ -9,7 +9,8 @@
         android:layout_height="wrap_content"
         android:layout_alignParentLeft="true"
         android:layout_alignParentTop="true"
-        android:text="@string/medical_history_label" />
+        android:text="@string/medical_history_label"
+        android:focusable="false" />
     
     <TextView
         android:id="@+id/measurement_date_label_tv_mv"
@@ -17,7 +18,8 @@
         android:layout_height="wrap_content"
         android:layout_alignParentLeft="true"
 		android:layout_below="@+id/medical_history_label_tv_mv"
-        android:text="@string/measurement_date_label" />
+        android:text="@string/measurement_date_label"
+        android:focusable="false" />
     
     <TextView
         android:id="@+id/sent_tv_mv"
@@ -25,7 +27,8 @@
         android:layout_height="wrap_content"
         android:layout_alignParentLeft="true"
         android:layout_below="@+id/measurement_date_label_tv_mv"
-        android:text="@string/sent_label" />
+        android:text="@string/sent_label"
+        android:focusable="false" />
 
     <CheckBox
         android:id="@+id/sent_cb_mv"
@@ -34,7 +37,8 @@
         android:layout_alignBaseline="@+id/sent_tv_mv"
         android:layout_toRightOf="@+id/sent_tv_mv"
         android:checked="false"
-        android:clickable="false" />
+        android:clickable="false"
+        android:focusable="false" />
 
     <TextView
         android:id="@+id/measurement_date_tv_mv"
@@ -42,7 +46,7 @@
         android:layout_height="wrap_content"
         android:layout_above="@+id/sent_tv_mv"
         android:layout_toRightOf="@+id/measurement_date_label_tv_mv"
-        android:text="aaa" />
+        android:focusable="false" />
 
     <TextView
         android:id="@+id/medical_history_tv_mv"
@@ -50,6 +54,6 @@
         android:layout_height="wrap_content"
         android:layout_above="@+id/measurement_date_tv_mv"
         android:layout_toRightOf="@+id/medical_history_label_tv_mv"
-        android:text="sss" />
+        android:focusable="false" />
 
 </RelativeLayout>

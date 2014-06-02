@@ -12,8 +12,9 @@ import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.ListView;
 import android.widget.TextView;
+import android.widget.Toast;
 
-public class MeasurementsViewActivity extends ListActivity {
+public class MeasurementsViewActivity extends ListActivity{
 	
 	private String TAG = "Debug";
 	
@@ -61,6 +62,9 @@ public class MeasurementsViewActivity extends ListActivity {
 	
 	@Override
 	protected void onListItemClick(ListView l, View v, int position, long id) {
+//		super.onListItemClick(l, v, position, id);
+		
+		Toast.makeText(MeasurementsViewActivity.this, "Item Pressed", Toast.LENGTH_LONG).show();
 		
 		MeasurementRecord er = (MeasurementRecord)l.getItemAtPosition(position);
 		Bundle args = new Bundle();

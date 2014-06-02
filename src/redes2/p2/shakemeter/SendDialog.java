@@ -3,14 +3,22 @@ package redes2.p2.shakemeter;
 import android.app.AlertDialog;
 import android.app.Dialog;
 import android.app.DialogFragment;
+import android.content.Context;
 import android.content.DialogInterface;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 
 public class SendDialog extends DialogFragment {
 	
+	Context mContext;
+	
+	public SendDialog(){
+		mContext = getActivity();
+	}
+	
 	@Override
     public Dialog onCreateDialog(Bundle savedInstanceState) {
+		super.onCreateDialog(savedInstanceState);
 		
 		Bundle mArgs = getArguments();
  

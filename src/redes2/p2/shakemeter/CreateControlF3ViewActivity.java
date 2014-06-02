@@ -52,15 +52,15 @@ public class CreateControlF3ViewActivity extends Activity implements
 	private float volume;
 	
 	//Variable para la barra de progreso
-	private ProgressDialog progress1;
+//	private ProgressDialog progress1;
 	private ProgressDialog progress2;
-	Handler handleProgress2 = new Handler() {
-		@Override
-		public void handleMessage(Message msg) {
-			super.handleMessage(msg);
-		    progress2.incrementProgressBy(1);
-		}
-	};
+//	Handler handleProgress2 = new Handler() {
+//		@Override
+//		public void handleMessage(Message msg) {
+//			super.handleMessage(msg);
+//		    progress2.incrementProgressBy(1);
+//		}
+//	};
 	
 	//Variables para el acelerometro
 	private SensorManager sensorManager;
@@ -121,20 +121,19 @@ public class CreateControlF3ViewActivity extends Activity implements
 		
 
 		//Preparacion de la barra de progreso
-		progress1 = new ProgressDialog(CreateControlF3ViewActivity.this);
-		progress1.setProgressStyle(ProgressDialog.STYLE_HORIZONTAL);
-	    progress1.setIndeterminate(false);
-	    progress1.setMessage("Preparece para la medición");
-		progress1.setMax(10);
-		progress1.setProgress(0);
-		progress1.setCancelable(false);
+//		progress1 = new ProgressDialog(CreateControlF3ViewActivity.this);
+//		progress1.setProgressStyle(ProgressDialog.STYLE_HORIZONTAL);
+//	    progress1.setIndeterminate(false);
+//	    progress1.setMessage("Preparece para la medición");
+//		progress1.setMax(10);
+//		progress1.setProgress(0);
+//		progress1.setCancelable(false);
 		
 		progress2 = new ProgressDialog(CreateControlF3ViewActivity.this);
 		progress2.setProgressStyle(ProgressDialog.STYLE_HORIZONTAL);
 	    progress2.setIndeterminate(false);
 	    progress2.setMessage("Medición en proceso");
 		progress2.setMax(30);
-		progress2.setProgress(0);
 		progress2.setCancelable(false);
 		//Fin de la preparacion de la barra de progreso
 		Log.d(TAG, "PROGESSDIALOG PREPARED");
@@ -151,7 +150,15 @@ public class CreateControlF3ViewActivity extends Activity implements
 				float actualVolume;
 				float maxVolume;
 				
-				Toast.makeText(CreateControlF3ViewActivity.this, "La medición comenzará en 10 segundos.", Toast.LENGTH_LONG).show();
+				measureOutButton.setClickable(false);
+				doneButton.setClickable(false);
+				
+				runOnUiThread(new Runnable() {
+			        public void run() {
+			        	Toast.makeText(CreateControlF3ViewActivity.this, "La medición comenzará en 10 segundos.", Toast.LENGTH_LONG).show();
+			        }
+				});
+				
 				
 				meterButtonPressed= true;
 				
@@ -167,16 +174,16 @@ public class CreateControlF3ViewActivity extends Activity implements
 					soundPool.play(soundID, volume, volume, 0, 0, 1);
 				
 						
-					progress1.show();
-					WaitingThread t1 = new WaitingThread(progress1);
+//					progress1.show();
+//					WaitingThread t1 = new WaitingThread(progress1);
+					WaitingThread t1 = new WaitingThread();
 					t1.start();
 					try {
 						t1.join();
 					} catch (InterruptedException e) {
-						// TODO Auto-generated catch block
 						e.printStackTrace();
 					}
-					progress1.dismiss();
+//					progress1.dismiss();
 					Log.d(TAG, "FIRST BEEP ENDED");
 				
 					//Preparacion del arreglo de measurements
@@ -193,6 +200,7 @@ public class CreateControlF3ViewActivity extends Activity implements
 					//Comienzo de la medicion
 					progressValue = 0;
 					
+					progress2.setProgress(0);
 					progress2.show();
 					lastSensorUpdate = System.currentTimeMillis();
 					lastProgressBarUpdate = lastSensorUpdate;
@@ -290,13 +298,15 @@ public class CreateControlF3ViewActivity extends Activity implements
 			if (actualTime - lastProgressBarUpdate > 1000){
 				lastProgressBarUpdate=actualTime;
 				progressValue+=1;
-				handleProgress2.sendMessage(handleProgress2.obtainMessage());
+				progress2.setProgress(progressValue);
 			}
 
 			// Si ya pasaron mas de 30 segundos apago el sensor,
 			// oculto la barra de progreso, suenan tres beeps e 
 			// indico que la medicion fue realizada.
 			if (progressValue > 30){
+				measureOutButton.setClickable(true);
+				doneButton.setClickable(true);
 				sensorManager.unregisterListener(CreateControlF3ViewActivity.this);
 				progress2.dismiss();
 				if(loaded){
