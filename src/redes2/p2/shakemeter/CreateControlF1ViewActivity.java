@@ -1,7 +1,10 @@
 package redes2.p2.shakemeter;
 
 import android.app.Activity;
+import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
+import android.content.SharedPreferences.Editor;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -26,6 +29,10 @@ public class CreateControlF1ViewActivity extends Activity {
 	private Spinner administrationRouteSpinner;
 	private Button nextButton;
 	
+	SharedPreferences sharedPreferences;
+	String shakeMeterSettings = "ShakeMeterSettings";
+	String medicalHistoryIDString = "medicalHistoryID";
+	
 	
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
@@ -40,6 +47,14 @@ public class CreateControlF1ViewActivity extends Activity {
 		hoursBetweenEditText = (EditText) findViewById(R.id.hours_et_f1);
 		administrationRouteSpinner = (Spinner) findViewById(R.id.administration_route_s_f1);
 		nextButton = (Button) findViewById(R.id.next_b_f1);
+		
+		sharedPreferences = getSharedPreferences(shakeMeterSettings, Context.MODE_PRIVATE);
+
+	    if (sharedPreferences.contains(medicalHistoryIDString))
+	    {
+	       medicalHistoryEditText.setText(sharedPreferences.getString(medicalHistoryIDString, ""));
+	    
+	    }
 		
 		nextButton.setOnClickListener(new OnClickListener() {
 			

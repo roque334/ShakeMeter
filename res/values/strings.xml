@@ -29,21 +29,23 @@
 	
 	<string name="top_label_f3">Medición de agitaciones</string>
 	<string name="instruction_label_f3">Instrucciones: </string>
-	<string name="instruction_1_f3">
-	    1. Al presionar el botón de medir sonará un pito, deberá esperar 
-	    diez (10) segundos. Durante este tiempo prepare la posición para 
+	<string name="instruction_1_1_f3">
+	    1. Al presionar el botón de medir sonará un pito, deberá esperar
+	</string>
+	<string name="instruction_1_2_f3">
+	    Durante este tiempo prepare la posición para 
 	    realizar la medición.
 	</string>
-	<string name="instruction_2_f3">
-	    2. Una vez transcurrido los diez (10) segundos, sonarán dos pitos 
+	<string name="instruction_2_1_f3">
+	    2. Una vez transcurrido el tiempo anterior, sonarán dos pitos 
 	    indicando el inicio de la medición de agitaciones. Dicha medición 
-	    durará cuarenta (40) segundos.
+	    durará 
 	</string>
 	<string name="instruction_3_f3">
-	    3. Una vez finalizado los cuarenta (40) segundos, sonarán tres pitos
+	    3. Una vez finalizado el tiempo de medición, sonarán tres pitos
 	    indicando el fin del proceso de medición. Si no se encuentra conforme 
 	    con la misma, puede repetirla pulsando el botón de medir nuevamente. 
-	    Una vez conforme con su medición presioner finalizar para guardar 
+	    Una vez conforme con su medición, presione finalizar para guardar 
 	    el control.
 	</string>
 	<string name="measure_out_label">Medir</string>
@@ -56,6 +58,13 @@
 	</string>
 	<string name="send">Enviar</string>
 	<string name="cancel">Cancelar</string>
+	
+	<string name="waiting_time_label">Tiempo de la preparación: </string>
+	<string name="measure_time_label">Tiempo de la medición: </string>
+	<string name="save">Guardar</string>
+	
+	<string name="delete">Borrar</string>
+	<string name="setting">Ajustes</string>
 	
 	<string-array name="administration_route">
         <item>Oral</item>

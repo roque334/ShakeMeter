@@ -16,7 +16,9 @@ import java.util.Calendar;
 import android.app.Activity;
 import android.app.ProgressDialog;
 import android.content.ContentValues;
+import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.content.res.Resources.Theme;
 import android.hardware.Sensor;
 import android.hardware.SensorEvent;
@@ -33,6 +35,7 @@ import android.util.Log;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.Button;
+import android.widget.TextView;
 import android.widget.Toast;
 
 public class CreateControlF3ViewActivity extends Activity implements
@@ -43,6 +46,17 @@ public class CreateControlF3ViewActivity extends Activity implements
 	private Bundle args;
 	
 	private boolean meterButtonPressed = false;
+	
+	//Variables del archivo de configuracion
+	SharedPreferences sharedPreferences;
+	String shakeMeterSettings = "ShakeMeterSettings";
+	String medicalHistoryIDString = "medicalHistoryID";
+	String waitingTimeString = "waitingTime";
+	String measureTimeString = "measureTime";
+	int waitingTime = 10;
+	int measureTime = 30;
+	TextView instruction1;
+	TextView instruction2;
 
 	//Variables para el beep
 	AudioManager audioManager;
@@ -91,8 +105,38 @@ public class CreateControlF3ViewActivity extends Activity implements
 	
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
+		String inst1;
+		String inst2;
+		
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.form_3_view);
+		
+		//Obtencion de parametros de archivo de configuracion
+		sharedPreferences = getSharedPreferences(shakeMeterSettings, Context.MODE_PRIVATE);
+		if (sharedPreferences.contains(waitingTimeString))
+	    {
+	       waitingTime = Integer.parseInt(sharedPreferences.getString(waitingTimeString, ""));
+
+	    }
+	    if (sharedPreferences.contains(measureTimeString))
+	    {
+	       measureTime = Integer.parseInt(sharedPreferences.getString(measureTimeString, ""));
+
+	    }
+	    //Fin Obtencion de parametros de archivo de configuracion
+	    
+	    //Fijar valores de tiempo en las instrucciones
+	    instruction1 = (TextView) findViewById(R.id.instruction_1_tv_f3);
+	    instruction2 = (TextView) findViewById(R.id.instruction_2_tv_f3);
+	    inst1 = instruction1.getText().toString();
+	    inst2 = instruction2.getText().toString();
+	    
+	    inst1 += " " + waitingTime + " segundo(s). " + getResources().getString(R.string.instruction_1_2_f3);
+	    inst2 += " " + measureTime + " segundo(s).";
+	    
+	    instruction1.setText(inst1);
+	    instruction2.setText(inst2);
+	    //Fin Fijar valores de tiempo en las instrucciones
 		
 		args = getIntent().getExtras().getBundle("Bundle");		
 		
@@ -133,7 +177,7 @@ public class CreateControlF3ViewActivity extends Activity implements
 		progress2.setProgressStyle(ProgressDialog.STYLE_HORIZONTAL);
 	    progress2.setIndeterminate(false);
 	    progress2.setMessage("Medición en proceso");
-		progress2.setMax(30);
+		progress2.setMax(measureTime);
 		progress2.setCancelable(false);
 		//Fin de la preparacion de la barra de progreso
 		Log.d(TAG, "PROGESSDIALOG PREPARED");
@@ -176,7 +220,7 @@ public class CreateControlF3ViewActivity extends Activity implements
 						
 //					progress1.show();
 //					WaitingThread t1 = new WaitingThread(progress1);
-					WaitingThread t1 = new WaitingThread();
+					WaitingThread t1 = new WaitingThread(waitingTime);
 					t1.start();
 					try {
 						t1.join();
@@ -304,7 +348,7 @@ public class CreateControlF3ViewActivity extends Activity implements
 			// Si ya pasaron mas de 30 segundos apago el sensor,
 			// oculto la barra de progreso, suenan tres beeps e 
 			// indico que la medicion fue realizada.
-			if (progressValue > 30){
+			if (progressValue > measureTime){
 				measureOutButton.setClickable(true);
 				doneButton.setClickable(true);
 				sensorManager.unregisterListener(CreateControlF3ViewActivity.this);

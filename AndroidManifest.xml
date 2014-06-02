@@ -40,6 +40,12 @@
             android:label="@string/app_name"
             android:screenOrientation="portrait">
         </activity>
+        
+        <activity 
+            android:name="redes2.p2.shakemeter.PreferencesViewActivity"
+            android:label="@string/app_name"
+            android:screenOrientation="portrait">
+        </activity>
             
     </application>
 

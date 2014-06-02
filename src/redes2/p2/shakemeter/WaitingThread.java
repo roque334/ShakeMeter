@@ -7,8 +7,10 @@ import android.widget.ProgressBar;
 
 public class WaitingThread extends Thread {
 //	ProgressDialog progress1;
+	int waitingTime;
 	
-	public WaitingThread(){
+	public WaitingThread(int waitingTime){
+		this.waitingTime = waitingTime;
 	}
 	
 //	public WaitingThread(ProgressDialog p1){
@@ -17,7 +19,7 @@ public class WaitingThread extends Thread {
 	
 	@Override
 	public void run(){
-		for (int i=0; i<10; i++){
+		for (int i=0; i<waitingTime; i++){
 	    	try {
 				Thread.sleep(1000);
 //				handleProgress1.sendMessage(handleProgress1.obtainMessage());
