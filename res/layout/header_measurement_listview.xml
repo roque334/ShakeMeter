@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<TextView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/header_measurement_label_tv_mv"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:gravity="center_horizontal"
+    android:text="@string/header_measurement_label"
+    android:textColor="#0000FF"
+    android:textSize="30sp" >
+    
+
+</TextView>

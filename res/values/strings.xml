@@ -1,0 +1,69 @@
+<resources>
+
+    <string name="app_name">ShakeMeter</string>
+    <string name="sent_label">Enviado: </string>
+    <string name="medical_history_label">Historia: </string>
+    <string name="measurement_date_label">Fecha: </string>
+    
+    <string name="medicine_label">Medicamento: </string>
+    <string name="dose_label">Dosis: </string>
+    <string name="mg_label">mg</string>
+    <string name="ml_label">ml</string>
+    <string name="hours_dose_label">Tiempo entre dosis: </string>
+	<string name="hours_label">Hora(s)</string>
+	<string name="administration_route_label">Vía de Administración</string>
+	<string name="next_label">Siguiente</string>
+	
+	<string name="top_label_f2">Indique en la escala la mejora de:</string>
+	<string name="general_symptons_label">1. Síntomas Generales: </string>
+	<string name="general_symptons_desc_label">
+	    Problema de equilibrio, dificultad de deglutir, babeo,
+	    estreñimiento, falta de expresión facial, trastornos 
+	    de sueño.
+	</string>
+	<string name="muscular_symptons_label">2. Síntomas Musculares: </string>
+	<string name="muscular_symptons_desc_label">
+	    Temblor, rigidez muscular, pérdida de movimiento 
+	    espontáneo.
+	</string>
+	
+	<string name="top_label_f3">Medición de agitaciones</string>
+	<string name="instruction_label_f3">Instrucciones: </string>
+	<string name="instruction_1_f3">
+	    1. Al presionar el botón de medir sonará un pito, deberá esperar 
+	    diez (10) segundos. Durante este tiempo prepare la posición para 
+	    realizar la medición.
+	</string>
+	<string name="instruction_2_f3">
+	    2. Una vez transcurrido los diez (10) segundos, sonarán dos pitos 
+	    indicando el inicio de la medición de agitaciones. Dicha medición 
+	    durará cuarenta (40) segundos.
+	</string>
+	<string name="instruction_3_f3">
+	    3. Una vez finalizado los cuarenta (40) segundos, sonarán tres pitos
+	    indicando el fin del proceso de medición. Si no se encuentra conforme 
+	    con la misma, puede repetirla pulsando el botón de medir nuevamente. 
+	    Una vez conforme con su medición presioner finalizar para guardar 
+	    el control.
+	</string>
+	<string name="measure_out_label">Medir</string>
+	<string name="done_label">Finalizar</string>
+	
+	<string name="header_measurement_label">Agregar nuevo control</string>
+	<string name="message_label">
+	    Indique la cédula del doctor y presione 
+	    enviar para mandarle la medición.
+	</string>
+	<string name="send">Enviar</string>
+	<string name="cancel">Cancelar</string>
+	
+	<string-array name="administration_route">
+        <item>Oral</item>
+        <item>Parental</item>
+        <item>Respiratoria</item>
+        <item>Tópica</item>
+    </string-array>
+    
+	<color name="blue_light">#00F3FF</color>
+
+</resources>
