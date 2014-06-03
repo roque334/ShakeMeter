@@ -81,6 +81,9 @@ public class MeasurementViewAdapter extends BaseAdapter {
 	}
 	
 	public void add(MeasurementRecord listItem) {
+		if(!list.isEmpty()){
+			list.clear();
+		}
 		list.add(listItem);
 		notifyDataSetChanged();
 	}

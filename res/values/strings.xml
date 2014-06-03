@@ -14,7 +14,7 @@
 	<string name="administration_route_label">Vía de Administración</string>
 	<string name="next_label">Siguiente</string>
 	
-	<string name="top_label_f2">Indique en la escala la mejora de:</string>
+	<string name="top_label_f2">Indique en una escala del 0 al 10 la mejora de:</string>
 	<string name="general_symptons_label">1. Síntomas Generales: </string>
 	<string name="general_symptons_desc_label">
 	    Problema de equilibrio, dificultad de deglutir, babeo,

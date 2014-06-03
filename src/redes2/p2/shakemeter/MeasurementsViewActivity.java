@@ -13,6 +13,7 @@ import android.view.View.OnClickListener;
 import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemClickListener;
 import android.widget.Button;
+import android.widget.CheckBox;
 import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -79,9 +80,8 @@ public class MeasurementsViewActivity extends Activity{
 				Bundle args = new Bundle();
 				args.putStringArrayList("Medidas", mr.getMeasurements());
 				
-				SendDialog sendDialog = new SendDialog();
-				sendDialog.setArguments(args);
-				sendDialog.show(getFragmentManager(), "Dialog");
+				SendDialog sendDialog = new SendDialog(MeasurementsViewActivity.this);
+				sendDialog.show();
 				Log.d(TAG, "MEASUREMENT SENT");
 				
 			}
@@ -97,6 +97,35 @@ public class MeasurementsViewActivity extends Activity{
 				Intent preferencesViewActivity = new Intent(getApplicationContext(), PreferencesViewActivity.class);
 				startActivity(preferencesViewActivity);
 				
+			}
+		});
+		
+		deleteButton.setOnClickListener(new OnClickListener() {
+			
+			@Override
+			public void onClick(View v) {
+				ArrayList<MeasurementRecord> list;
+				CheckBox deleteCB;
+				int listPos;
+				boolean deleted;
+				deleted = false;
+				
+				for(int i=1; i < mAdapter.getCount()+1; i++){
+					
+					list = mAdapter.getList();
+					deleteCB = (CheckBox) mListView.getChildAt(i).findViewById(R.id.delete_cb_mv);
+					if(deleteCB.isChecked()){
+						deleted = true;
+						listPos = i-1;
+						mDbHelper.delete(DatabaseOpenHelper.TABLE_CONTROL, 
+								DatabaseOpenHelper.CONTROL_ID + "=" + list.get(listPos).getControlID(),
+								null);
+						MeasurementsViewActivity.this.deleteFile(list.get(listPos).getMeasurmentFile());
+					}
+				}
+				mAdapter.add(mDbHelper.getAllMeasures(), MeasurementsViewActivity.this);
+				deleteCB = (CheckBox) mListView.getChildAt(1).findViewById(R.id.delete_cb_mv);
+				deleteCB.setChecked(false);
 			}
 		});
 		

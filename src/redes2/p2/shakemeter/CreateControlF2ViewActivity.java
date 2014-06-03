@@ -7,15 +7,16 @@ import android.os.Bundle;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.Button;
-import android.widget.NumberPicker;
+import android.widget.EditText;
+import android.widget.Toast;
 
 public class CreateControlF2ViewActivity extends Activity {
 	
 	Bundle args;
 	
-	NumberPicker gereralSymptonsLevelNumberPicker;
+	EditText gereralSymptonsLevelEditText;
 	
-	NumberPicker muscularSymptonLevelNumberPicker;
+	EditText muscularSymptonLevelEditText;
 	
 	Button nextButton;
 	
@@ -26,14 +27,9 @@ public class CreateControlF2ViewActivity extends Activity {
 		
 		 args = getIntent().getExtras().getBundle("Bundle");
 		
-		gereralSymptonsLevelNumberPicker = (NumberPicker) findViewById(R.id.general_sypmtons_np_f2);
-		muscularSymptonLevelNumberPicker = (NumberPicker) findViewById(R.id.muscular_sypmtons_np_f2);
+		gereralSymptonsLevelEditText = (EditText) findViewById(R.id.general_sypmtons_et_f2);
+		muscularSymptonLevelEditText = (EditText) findViewById(R.id.muscular_sypmtons_et_f2);
 		nextButton = (Button) findViewById(R.id.next_b_f2);
-		
-		gereralSymptonsLevelNumberPicker.setMinValue(0);
-		muscularSymptonLevelNumberPicker.setMinValue(0);
-		gereralSymptonsLevelNumberPicker.setMaxValue(10);
-		muscularSymptonLevelNumberPicker.setMaxValue(10);
 		
 		nextButton.setOnClickListener(new OnClickListener() {
 			
@@ -41,21 +37,30 @@ public class CreateControlF2ViewActivity extends Activity {
 			public void onClick(View v) {
 				Intent createControlF3ViewActivity;
 				
-				String generalSymptonLevel;
-				String muscularSymptonLevel;
+				int generalSymptonLevel;
+				int muscularSymptonLevel;
 				
-				generalSymptonLevel = "" + gereralSymptonsLevelNumberPicker.getValue() + "";
-				muscularSymptonLevel = "" + muscularSymptonLevelNumberPicker.getValue() + "";
-				
-				args.putString(DatabaseOpenHelper.GENERAL_SYMPTONS_LEVEL, generalSymptonLevel);
-				args.putString(DatabaseOpenHelper.MUSCULAR_SYMPTONS_LEVEL, muscularSymptonLevel);
-				
-				createControlF3ViewActivity = new Intent(getApplicationContext(), CreateControlF3ViewActivity.class);
-				createControlF3ViewActivity.putExtra("Bundle", args);
-				
-				startActivity(createControlF3ViewActivity);
-				
-				
+				if((gereralSymptonsLevelEditText.length() != 0) &&
+						muscularSymptonLevelEditText.length() != 0){
+					generalSymptonLevel = Integer.parseInt(gereralSymptonsLevelEditText.getText().toString());
+					muscularSymptonLevel = Integer.parseInt(muscularSymptonLevelEditText.getText().toString());
+					
+					if ((generalSymptonLevel>-1) && (generalSymptonLevel<11) &&
+							(muscularSymptonLevel>-1) && (muscularSymptonLevel<11)){
+						args.putString(DatabaseOpenHelper.GENERAL_SYMPTONS_LEVEL, String.valueOf(generalSymptonLevel));
+						args.putString(DatabaseOpenHelper.MUSCULAR_SYMPTONS_LEVEL, String.valueOf(muscularSymptonLevel));
+						
+						createControlF3ViewActivity = new Intent(getApplicationContext(), CreateControlF3ViewActivity.class);
+						createControlF3ViewActivity.putExtra("Bundle", args);
+						
+						startActivity(createControlF3ViewActivity);
+					}else{
+						Toast.makeText(getApplicationContext(), "Debe colocar enteros entre 0 y 10", Toast.LENGTH_LONG).show();
+					}
+					
+				}else{
+					Toast.makeText(getApplicationContext(), "Debe llenar todos los campos para poder avanzar.", Toast.LENGTH_LONG).show();
+				}	
 			}
 		});
 		

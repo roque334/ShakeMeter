@@ -9,6 +9,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/top_label_f2"
+        android:gravity="center_horizontal"
         android:textAppearance="?android:attr/textAppearanceMedium" />
 
     <TextView
@@ -30,23 +31,24 @@
             android:text="@string/general_symptons_label"
             android:textAppearance="?android:attr/textAppearanceMedium" />
 
-        <NumberPicker
-            android:id="@+id/general_sypmtons_np_f2"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignParentRight="true"
-            android:layout_alignParentTop="true" />
-
-        <TextView
-            android:id="@+id/general_symptons_desc_tv_f2"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_centerVertical="true"
-            android:layout_toLeftOf="@+id/general_sypmtons_np_f2"
-            android:text="@string/general_symptons_desc_label"
-            android:textAppearance="?android:attr/textAppearanceSmall" />
-
     </RelativeLayout>
+
+    <TextView
+        android:id="@+id/general_symptons_desc_tv_f2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/general_symptons_desc_label"
+        android:textAppearance="?android:attr/textAppearanceSmall" />
+
+    <EditText
+        android:id="@+id/general_sypmtons_et_f2"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:inputType="number" >
+
+        <requestFocus />
+    </EditText>
 
     <TextView
         android:id="@+id/textView3"
@@ -65,26 +67,35 @@
             android:layout_alignParentLeft="true"
             android:layout_alignParentTop="true"
             android:text="@string/muscular_symptons_label"
+            
             android:textAppearance="?android:attr/textAppearanceMedium" />
 
-        <NumberPicker
-            android:id="@+id/muscular_sypmtons_np_f2"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignParentRight="true"
-            android:layout_alignParentTop="true" />
-
-        <TextView
-            android:id="@+id/muscular_symptons_desc_tv_f2"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignParentLeft="true"
-            android:layout_centerVertical="true"
-            android:layout_toLeftOf="@+id/muscular_sypmtons_np_f2"
-            android:text="@string/muscular_symptons_desc_label"
-            android:textAppearance="?android:attr/textAppearanceSmall" />
-
     </RelativeLayout>
+
+    <TextView
+        android:id="@+id/muscular_symptons_desc_tv_f2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/muscular_symptons_desc_label"
+        android:textAppearance="?android:attr/textAppearanceSmall" />
+
+    <EditText
+        android:id="@+id/muscular_sypmtons_et_f2"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:inputType="number"
+         />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceMedium" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceMedium" />
 
     <Button
         android:id="@+id/next_b_f2"

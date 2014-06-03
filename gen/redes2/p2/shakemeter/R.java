@@ -21,15 +21,17 @@ public final class R {
     }
     public static final class id {
         public static final int administration_route_s_f1=0x7f090010;
-        public static final int cancel_b_pv=0x7f090037;
-        public static final int detele_b_msv=0x7f09002d;
-        public static final int doctor_id_et_sd=0x7f090030;
+        public static final int cancel_b_pv=0x7f09003a;
+        public static final int cancel_b_sd=0x7f090032;
+        public static final int delete_cb_mv=0x7f09002c;
+        public static final int detele_b_msv=0x7f09002e;
+        public static final int doctor_id_et_sd=0x7f090031;
         public static final int done_b_f3=0x7f090024;
         public static final int dose_et_f1=0x7f090007;
         public static final int dose_label_tv_f1=0x7f090006;
-        public static final int general_symptons_desc_tv_f2=0x7f090016;
+        public static final int general_symptons_desc_tv_f2=0x7f090015;
         public static final int general_symptons_label_tv_f2=0x7f090014;
-        public static final int general_sypmtons_np_f2=0x7f090015;
+        public static final int general_sypmtons_et_f2=0x7f090016;
         public static final int header_measurement_label_tv_mv=0x7f090025;
         public static final int hour_dose_tv_f1=0x7f09000c;
         public static final int hours_et_f1=0x7f09000d;
@@ -39,32 +41,33 @@ public final class R {
         public static final int instruction_3_tv_f3=0x7f090022;
         public static final int instruction_label_tv_f3=0x7f09001c;
         public static final int measure_out_b_f3=0x7f090023;
-        public static final int measure_time_et_pv=0x7f090036;
-        public static final int measure_time_tv_pv=0x7f090035;
-        public static final int measurement_date_label_tv_mv=0x7f090027;
-        public static final int measurement_date_tv_mv=0x7f09002a;
-        public static final int measures_lv_msv=0x7f09002e;
+        public static final int measure_time_et_pv=0x7f090039;
+        public static final int measure_time_tv_pv=0x7f090038;
+        public static final int measurement_date_label_tv_mv=0x7f09002a;
+        public static final int measurement_date_tv_mv=0x7f090027;
+        public static final int measures_lv_msv=0x7f09002f;
         public static final int medical_history_et_f1=0x7f090001;
-        public static final int medical_history_et_pv=0x7f090032;
+        public static final int medical_history_et_pv=0x7f090035;
         public static final int medical_history_label_tv_f1=0x7f090000;
         public static final int medical_history_label_tv_mv=0x7f090026;
-        public static final int medical_history_tv_mv=0x7f09002b;
-        public static final int medical_history_tv_pv=0x7f090031;
+        public static final int medical_history_tv_mv=0x7f090029;
+        public static final int medical_history_tv_pv=0x7f090034;
         public static final int medicine_et_f1=0x7f090004;
         public static final int medicine_tv_f1=0x7f090003;
-        public static final int message_label_tv_sd=0x7f09002f;
+        public static final int message_label_tv_sd=0x7f090030;
         public static final int mg_rb_f1=0x7f090009;
         public static final int ml_rb_f1=0x7f09000a;
-        public static final int muscular_symptons_desc_tv_f2=0x7f090019;
+        public static final int muscular_symptons_desc_tv_f2=0x7f090018;
         public static final int muscular_symptons_label_tv_f2=0x7f090017;
-        public static final int muscular_sypmtons_np_f2=0x7f090018;
+        public static final int muscular_sypmtons_et_f2=0x7f090019;
         public static final int next_b_f1=0x7f090012;
         public static final int next_b_f2=0x7f09001a;
         public static final int radioGroup=0x7f090008;
-        public static final int save_b_pv=0x7f090038;
-        public static final int sent_cb_mv=0x7f090029;
+        public static final int save_b_pv=0x7f09003b;
+        public static final int send_b_sd=0x7f090033;
+        public static final int sent_cb_mv=0x7f09002b;
         public static final int sent_tv_mv=0x7f090028;
-        public static final int settings_b_msv=0x7f09002c;
+        public static final int settings_b_msv=0x7f09002d;
         public static final int textView1=0x7f090002;
         public static final int textView2=0x7f090005;
         public static final int textView3=0x7f09000b;
@@ -75,8 +78,8 @@ public final class R {
         public static final int textView9=0x7f090021;
         public static final int top_label_tv_f2=0x7f090013;
         public static final int top_label_tv_f3=0x7f09001b;
-        public static final int waiting_time_et_pv=0x7f090034;
-        public static final int waiting_time_tv_pv=0x7f090033;
+        public static final int waiting_time_et_pv=0x7f090037;
+        public static final int waiting_time_tv_pv=0x7f090036;
     }
     public static final class layout {
         public static final int form_1_view=0x7f030000;
@@ -86,7 +89,8 @@ public final class R {
         public static final int measurement_view=0x7f030004;
         public static final int measurements_view=0x7f030005;
         public static final int send_dialog=0x7f030006;
-        public static final int settings_view=0x7f030007;
+        public static final int send_dialog_fragment=0x7f030007;
+        public static final int settings_view=0x7f030008;
     }
     public static final class raw {
         public static final int beep=0x7f040000;
