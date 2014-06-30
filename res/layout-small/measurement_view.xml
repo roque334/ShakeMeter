@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent" >
+    
+    <TextView
+        android:id="@+id/medical_history_label_tv_mv"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/measurement_date_tv_mv"
+        android:layout_alignLeft="@+id/sent_tv_mv"
+        android:focusable="false"
+        android:text="@string/medical_history_label" />
+
+    <TextView
+        android:id="@+id/medical_history_tv_mv"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_toRightOf="@id/medical_history_label_tv_mv"
+        android:layout_centerHorizontal="true"
+        android:focusable="false" />
+
+    <TextView
+        android:id="@+id/measurement_date_label_tv_mv"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBaseline="@+id/measurement_date_tv_mv"
+        android:layout_alignBottom="@+id/measurement_date_tv_mv"
+        android:layout_alignLeft="@+id/medical_history_label_tv_mv"
+        android:focusable="false"
+        android:text="@string/measurement_date_label" />
+
+    <TextView
+        android:id="@+id/measurement_date_tv_mv"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/medical_history_tv_mv"
+        android:layout_marginTop="19dp"
+        android:layout_toRightOf="@+id/measurement_date_label_tv_mv"
+        android:focusable="false" />
+
+    <TextView
+        android:id="@+id/sent_tv_mv"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBaseline="@+id/sent_cb_mv"
+        android:layout_alignBottom="@+id/sent_cb_mv"
+        android:layout_marginLeft="37dp"
+        android:focusable="false"
+        android:text="@string/sent_label" />
+    
+    <CheckBox
+        android:id="@+id/sent_cb_mv"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/measurement_date_label_tv_mv"
+        android:layout_marginTop="14dp"
+        android:layout_toRightOf="@+id/sent_tv_mv"
+        android:checked="false"
+        android:clickable="false"
+        android:focusable="false" />
+
+    <CheckBox
+        android:id="@+id/delete_cb_mv"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBaseline="@+id/measurement_date_label_tv_mv"
+        android:layout_alignBottom="@+id/measurement_date_label_tv_mv"
+        android:layout_alignParentLeft="true"
+        android:focusable="false" />
+
+</RelativeLayout>

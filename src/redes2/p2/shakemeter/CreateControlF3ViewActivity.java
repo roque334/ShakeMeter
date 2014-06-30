@@ -277,15 +277,16 @@ public class CreateControlF3ViewActivity extends Activity implements
 					mDbHelper = new DatabaseOpenHelper(getApplicationContext());
 					
 					//Obtener la fecha actual de la medicion
-					dateFormat = new SimpleDateFormat("yyyy/MM/dd HH:mm:ss");
+					dateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
 					calendar = Calendar.getInstance();
 					date = dateFormat.format(calendar.getTime());
+					args.putString(DatabaseOpenHelper.DATE, date);
 					
 					//Nombre del archivo
-					fileName += args.getString(DatabaseOpenHelper.MEDICAL_HISTORY_ID + "_" +
-							args.getString(DatabaseOpenHelper.DATE) + ".data");
+					fileName += args.getString(DatabaseOpenHelper.MEDICAL_HISTORY_ID)+ "_" +
+							args.getString(DatabaseOpenHelper.DATE) + ".txt";
 					
-					args.putString(DatabaseOpenHelper.DATE, date);
+					
 					args.putString(DatabaseOpenHelper.MEASUREMENT_FILE, fileName);
 					args.putInt(DatabaseOpenHelper.SENT, 0);
 					
@@ -293,9 +294,9 @@ public class CreateControlF3ViewActivity extends Activity implements
 					contentValues = new ContentValues();
 					contentValues.put(DatabaseOpenHelper.MEDICAL_HISTORY_ID, args.getString(DatabaseOpenHelper.MEDICAL_HISTORY_ID));
 					contentValues.put(DatabaseOpenHelper.MEDICINE, args.getString(DatabaseOpenHelper.MEDICINE));
-					contentValues.put(DatabaseOpenHelper.DOSE_MG, args.getString(DatabaseOpenHelper.MEDICINE));
-					contentValues.put(DatabaseOpenHelper.DOSE_ML, args.getString(DatabaseOpenHelper.DOSE_MG));
-					contentValues.put(DatabaseOpenHelper.HOURS_BETWEEN, args.getString(DatabaseOpenHelper.DOSE_ML));
+					contentValues.put(DatabaseOpenHelper.DOSE_MG, args.getString(DatabaseOpenHelper.DOSE_MG));
+					contentValues.put(DatabaseOpenHelper.DOSE_ML, args.getString(DatabaseOpenHelper.DOSE_ML));
+					contentValues.put(DatabaseOpenHelper.HOURS_BETWEEN, args.getString(DatabaseOpenHelper.HOURS_BETWEEN));
 					contentValues.put(DatabaseOpenHelper.ADMINISTRATION_ROUTE, args.getString(DatabaseOpenHelper.ADMINISTRATION_ROUTE));
 					contentValues.put(DatabaseOpenHelper.GENERAL_SYMPTONS_LEVEL, args.getString(DatabaseOpenHelper.GENERAL_SYMPTONS_LEVEL));
 					contentValues.put(DatabaseOpenHelper.MUSCULAR_SYMPTONS_LEVEL, args.getString(DatabaseOpenHelper.MUSCULAR_SYMPTONS_LEVEL));
@@ -311,6 +312,8 @@ public class CreateControlF3ViewActivity extends Activity implements
 					Log.d(TAG, "DONE AND MEASURED ENDED");
 					if(getFileStreamPath(fileName).exists()){
 						Log.d(TAG, "DOES THE FILE EXISTS?" + getFileStreamPath(fileName).exists());
+						Log.d(TAG, args.getString(DatabaseOpenHelper.MEASUREMENT_FILE));
+						Log.d(TAG, fileName);
 						readFile();
 					}
 					

@@ -32,6 +32,7 @@ public class DatabaseOpenHelper extends SQLiteOpenHelper {
 	final static String DATE = "date";
 	final static String SENT = "sent";
 	final static String MEASUREMENT_FILE = "measurementFile";
+	final static String MEASUREMENTS = "measurements";
 	
 	final static String CREATE_TABLE_CONTROL = "CREATE TABLE "
             + TABLE_CONTROL + "(" + CONTROL_ID + " INTEGER PRIMARY KEY AUTOINCREMENT, " + MEDICAL_HISTORY_ID
@@ -102,6 +103,13 @@ public class DatabaseOpenHelper extends SQLiteOpenHelper {
 		db.close();
 		Log.d(TAG, "REGISTER INSERTED");
 		
+	}
+	
+	public void updateRecord(String table, ContentValues values, String whereClause, String[] whereArgs){
+		SQLiteDatabase db = this.getWritableDatabase();
+		db.update(table, values, whereClause, whereArgs);
+		db.close();
+		Log.d(TAG, "REGISTER UPDATED");
 	}
 	
 	public void delete(String table, String whereClause, String[] whereArgs){

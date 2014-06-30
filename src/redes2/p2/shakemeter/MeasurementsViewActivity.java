@@ -77,13 +77,32 @@ public class MeasurementsViewActivity extends Activity{
 				
 				MeasurementRecord mr = (MeasurementRecord) mAdapter.getList().get(listPosition);
 				Log.d(TAG, mr.getMedicalHistoryID());
-				Bundle args = new Bundle();
-				args.putStringArrayList("Medidas", mr.getMeasurements());
+				Log.d(TAG, mr.getMedicine());
+				Log.d(TAG, mr.getDoseMg());
+				Log.d(TAG, mr.getDoseMl());
+				Log.d(TAG, mr.getHoursBetween());
+				Log.d(TAG, mr.getAdministrationRoute());
+				Log.d(TAG, mr.getGeneralSymptonsLevel());
+				Log.d(TAG, mr.getMuscularSymptonsLevel());
+				Log.d(TAG, mr.getMeasurmentFile());
+				Log.d(TAG, mr.getDate());
 				
-				SendDialog sendDialog = new SendDialog(MeasurementsViewActivity.this);
+				Bundle args = new Bundle();
+				args.putString(DatabaseOpenHelper.CONTROL_ID, mr.getControlID());
+				args.putString(DatabaseOpenHelper.MEDICAL_HISTORY_ID, mr.getMedicalHistoryID());
+				args.putString(DatabaseOpenHelper.MEDICINE, mr.getMedicine());
+				args.putString(DatabaseOpenHelper.DOSE_MG, mr.getDoseMg());
+				args.putString(DatabaseOpenHelper.DOSE_ML, mr.getDoseMl());
+				args.putString(DatabaseOpenHelper.HOURS_BETWEEN, mr.getHoursBetween());
+				args.putString(DatabaseOpenHelper.ADMINISTRATION_ROUTE, mr.getAdministrationRoute());
+				args.putString(DatabaseOpenHelper.GENERAL_SYMPTONS_LEVEL, mr.getGeneralSymptonsLevel());
+				args.putString(DatabaseOpenHelper.MUSCULAR_SYMPTONS_LEVEL, mr.getMuscularSymptonsLevel());
+				args.putString(DatabaseOpenHelper.MEASUREMENT_FILE, mr.getMeasurmentFile());
+				args.putString(DatabaseOpenHelper.DATE, mr.getDate());
+				
+				SendDialog sendDialog = new SendDialog(MeasurementsViewActivity.this, args);
 				sendDialog.show();
 				Log.d(TAG, "MEASUREMENT SENT");
-				
 			}
 		});
 		
@@ -149,6 +168,56 @@ public class MeasurementsViewActivity extends Activity{
 //		
 //	}
 	
+	@Override
+	public void onResume(){
+		super.onResume();
+		ArrayList<MeasurementRecord> measurements = mDbHelper.getAllMeasures();
+		
+		mAdapter.add(measurements, getApplicationContext());
+		
+		mListView.setAdapter(mAdapter);
+		
+		mListView.setOnItemClickListener(new OnItemClickListener() {
+
+			@Override
+			public void onItemClick(AdapterView<?> parent, View view,
+					int position, long id) {
+				int listPosition = position-1;
+				
+				Toast.makeText(MeasurementsViewActivity.this, "Item Pressed", Toast.LENGTH_LONG).show();
+				
+				MeasurementRecord mr = (MeasurementRecord) mAdapter.getList().get(listPosition);
+				Log.d(TAG, mr.getMedicalHistoryID());
+				Log.d(TAG, mr.getMedicine());
+				Log.d(TAG, mr.getDoseMg());
+				Log.d(TAG, mr.getDoseMl());
+				Log.d(TAG, mr.getHoursBetween());
+				Log.d(TAG, mr.getAdministrationRoute());
+				Log.d(TAG, mr.getGeneralSymptonsLevel());
+				Log.d(TAG, mr.getMuscularSymptonsLevel());
+				Log.d(TAG, mr.getMeasurmentFile());
+				Log.d(TAG, mr.getDate());
+				
+				Bundle args = new Bundle();
+				args.putString(DatabaseOpenHelper.CONTROL_ID, mr.getControlID());
+				args.putString(DatabaseOpenHelper.MEDICAL_HISTORY_ID, mr.getMedicalHistoryID());
+				args.putString(DatabaseOpenHelper.MEDICINE, mr.getMedicine());
+				args.putString(DatabaseOpenHelper.DOSE_MG, mr.getDoseMg());
+				args.putString(DatabaseOpenHelper.DOSE_ML, mr.getDoseMl());
+				args.putString(DatabaseOpenHelper.HOURS_BETWEEN, mr.getHoursBetween());
+				args.putString(DatabaseOpenHelper.ADMINISTRATION_ROUTE, mr.getAdministrationRoute());
+				args.putString(DatabaseOpenHelper.GENERAL_SYMPTONS_LEVEL, mr.getGeneralSymptonsLevel());
+				args.putString(DatabaseOpenHelper.MUSCULAR_SYMPTONS_LEVEL, mr.getMuscularSymptonsLevel());
+				args.putString(DatabaseOpenHelper.MEASUREMENT_FILE, mr.getMeasurmentFile());
+				args.putString(DatabaseOpenHelper.DATE, mr.getDate());
+				
+				SendDialog sendDialog = new SendDialog(MeasurementsViewActivity.this, args);
+				sendDialog.show();
+				Log.d(TAG, "MEASUREMENT SENT");
+			}
+		});
+		
+	}
 	// Delete all records
 	private void clearAll() {
 	

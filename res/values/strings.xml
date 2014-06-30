@@ -53,8 +53,8 @@
 	
 	<string name="header_measurement_label">Agregar nuevo control</string>
 	<string name="message_label">
-	    Indique la cédula del doctor y presione 
-	    enviar para mandarle la medición.
+	    Indique el email del doctor y presione 
+	    enviar para mandar los datos.
 	</string>
 	<string name="send">Enviar</string>
 	<string name="cancel">Cancelar</string>

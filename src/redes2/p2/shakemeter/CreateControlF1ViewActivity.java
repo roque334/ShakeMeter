@@ -107,9 +107,9 @@ public class CreateControlF1ViewActivity extends Activity {
 				Log.d(TAG, "HoursBetween: " + hoursBetween);
 				Log.d(TAG, "AdministrationRoute: " + administrationRoute);
 				
-				if(!medicalHistoryID.isEmpty() && !medicine.isEmpty() 
-						&& (!doseMg.isEmpty() || !doseMl.isEmpty())
-						&& !hoursBetween.isEmpty() && !administrationRoute.isEmpty()){
+				if(!(medicalHistoryID.compareTo("")==0) && !(medicine.compareTo("")==0) 
+						&& (!(doseMg.compareTo("")==0) || !(doseMl.compareTo("")==0))
+						&& !(hoursBetween.compareTo("")==0) && !(administrationRoute.compareTo("")==0)){
 					
 					Log.d(TAG, "ALL FIELDS HAVE DATA");
 					
